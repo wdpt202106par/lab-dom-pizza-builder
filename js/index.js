@@ -69,15 +69,12 @@ function renderGreenPeppers() {
 
 function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
-  document.querySelectorAll('.sauce').forEach(sauceW => {
+  let sauceW= document.querySelector('.sauce')
     if (state.whiteSauce) {
-      sauceW.style.visibility = 'hidden';
+      sauceW.classList.add('sauce-white');
     } else {
-      sauceW.style.visibility = 'visible';
+      sauceW.classList.remove('sauce-white');
     }
-  });
-
-
 
 }
 
@@ -123,7 +120,7 @@ document.querySelector('.btn.btn-green-peppers').addEventListener('click', () =>
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
 
 document.querySelector('.btn.btn-sauce').addEventListener('click', () => {
-  state.whiteSauce = !state.whi;
+  state.whiteSauce = !state.whiteSauce;
   renderEverything();
 });
 
