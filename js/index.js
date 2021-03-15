@@ -67,21 +67,21 @@ function renderGreenPeppers() {
 function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
   document.querySelectorAll('.sauce').forEach(sauce=> {
-    if (state.whiteSauce){
-      sauce.style.visibility = 'hidden';
-    } else {
+    if (state.whiteSauce===true){
       sauce.style.visibility = 'visible';
+    } else {
+      sauce.style.visibility = 'hidden';
     }
   })
 }
 
 function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
-  document.querySelectorAll('.crust').forEach(sauce=> {
+  document.querySelectorAll('.crust').forEach(crust=> {
     if (state.glutenFreeCrust){
-      sauce.style.visibility = 'hidden';
+      crust.style.visibility = 'hidden';
     } else {
-      sauce.style.visibility = 'visible';
+      crust.style.visibility = 'visible';
     }
   })
 }
@@ -113,13 +113,13 @@ function renderButtons() {
     document.querySelector('.btn.btn-green-peppers').classList.remove('active');
   }
   //4.
-  if (state.whiteSauce===false){
+  if (state.whiteSauce===true){
     document.querySelector('.btn.btn-sauce').classList.add('active');
   } else {
     document.querySelector('.btn.btn-sauce').classList.remove('active');
   }
   //5.
-  if (state.glutenFreeCrust===false){
+  if (state.glutenFreeCrust===true){
     document.querySelector('.btn.btn-crust').classList.add('active');
   } else {
     document.querySelector('.btn.btn-crust').classList.remove('active');
@@ -155,7 +155,7 @@ function renderPrice() {
     list.appendChild(addGreenpeppers);
     sum++;
   }
-  if (state.whiteSauce){
+  if (state.whiteSauce===true){
     list.appendChild(addWhiteSauce);
     sum+=3;
   }
