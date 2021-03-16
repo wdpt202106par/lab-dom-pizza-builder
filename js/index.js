@@ -127,41 +127,34 @@ function renderButtons() {
 }
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  const total = document.querySelector('strong');
   const panel = document.querySelector('.panel.price');
   const list = document.querySelector('.panel.price ul');
-  list.innerHTML='';
-  let addPepperoni = document.createElement('li');
-  addPepperoni.innerHTML ='$1 pepperoni';
-  let addMushrooms = document.createElement('li');
-  addMushrooms.innerHTML ='$1 mushrooms';
-  let addGreenpeppers = document.createElement('li');
-  addGreenpeppers.innerHTML ='$1 green peppers';
-  let addWhiteSauce = document.createElement('li');
-  addWhiteSauce.innerHTML ='$3 white sauce';
-  let addGlutenFreeCrust = document.createElement('li');
-  addGlutenFreeCrust.innerHTML ='$5 gluten-free crust';
-  const total = document.querySelector('strong');
+  const allIng = document.querySelectorAll('.panel.price ul li');//[li,li,li,li,li]
+  console.log(allIng);
+  allIng.forEach(ing=>ing.style.textDecoration='line-through')  ;
   let sum = 10;
-  
-  if (state.pepperoni) {
-    list.appendChild(addPepperoni); 
-    sum++; 
-  }
-  if (state.mushrooms) {
-    list.appendChild(addMushrooms);
-    sum++;
-  }
-  if (state.greenPeppers){
-    list.appendChild(addGreenpeppers);
-    sum++;
-  }
-  if (state.whiteSauce===true){
-    list.appendChild(addWhiteSauce);
-    sum+=3;
-  }
-  if (state.glutenFreeCrust){
-    list.appendChild(addGlutenFreeCrust);
-    sum+=5;
+  for (let i=0;i<allIng.length;i++){
+    if (allIng[i].innerHTML==='$1 pepperoni' && state.pepperoni){
+      allIng[i].style.textDecoration='none';
+      sum++; 
+    } 
+    if (allIng[i].innerHTML==='$1 mushrooms' && state.mushrooms){
+      allIng[i].style.textDecoration='none';
+      sum++;
+    } 
+    if (allIng[i].innerHTML==='$1 green peppers' && state.greenPeppers){
+      allIng[i].style.textDecoration='none';
+      sum++;
+    } 
+    if (allIng[i].innerHTML==='$3 white sauce' && state.whiteSauce){
+      allIng[i].style.textDecoration='none';
+      sum+=3;
+    } 
+    if (allIng[i].innerHTML==='$5 gluten-free crust' && state.glutenFreeCrust){
+      allIng[i].style.textDecoration='none';
+      sum+=5;
+    } 
   }
   total.innerHTML=`$${sum}`;
 }
